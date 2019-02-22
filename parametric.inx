@@ -18,7 +18,7 @@
     along with inkscape-parametric.  If not, see <https://www.gnu.org/licenses/>.
 -->
 <inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
-    <_name>Parametric SVG (Run)</_name>
+    <_name>Run and Update</_name>
     <id>com.fdmtech.inkscape.parametric</id>
     <dependency type="executable" location="extensions">parametric.py</dependency>
     <dependency type="executable" location="extensions">inkex.py</dependency>

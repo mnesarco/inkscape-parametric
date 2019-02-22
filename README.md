@@ -48,7 +48,7 @@ Just copy parametric.py and parametric.inx to your inkscape extensions folder.
 
 After install, restart inkscape and the extension will appear:
 
-Menu / Extensions / Parametric SVG / Parametric SVG (Run)
+Menu / Extensions / Parametric SVG / Run and Update
 
 You can set your parametric expressions and script values using the builtin xml editor: Shift + Ctrl + X
 
@@ -62,7 +62,7 @@ If you are using Linux, you can edit the parametric python code in an external e
 
 The code editor will be integrated:
 
-Menu / Extensions / Parametric SVG / Parametric SVG (Editor)
+Menu / Extensions / Parametric SVG / External code editor
 
 Then you can edit the parametric script in the SciTE editor with syntax coloring. After you save and
 close the editor, your chages will be propagated to your svg document.
