@@ -15,7 +15,7 @@ The value can be any valid python expression.
 
 ## Define variables and functions
 
-You can define your own variables and funtions inside the document and use them in expressions.
+You can define your own variables and functions inside the document and use them in expressions.
 Your python code must be defined in
 
 ```
@@ -29,7 +29,7 @@ def myfunct():
 </parametric:script>
 ```
 
-them you can use them in your attributes:
+then you can use them in your attributes:
 
 ```
 <rect ... parametric:width="width" parametric:height="height" parametric:y="myfunct()" />
@@ -39,4 +39,11 @@ them you can use them in your attributes:
 
 Just copy parametric.py and parametric.inx in your inkscape extensions folder.
 
+After install, restart inkscape and the extension will appear:
+
+Menu / Extensions / Parametric SVG / Parametric SVG (Python)
+
+You can set your parametric expressions and script values using the builtin xml editor: Shift + Ctrl + X
+
+ 
 
