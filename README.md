@@ -2,6 +2,13 @@
 
 This extension allows to define variables and set attributes with python expressions.
 
+This is inspired by https://github.com/projectshaped/parametric-svg which is a not maintained parametric svg spec. But this implementation has two differences:
+
+ * All expressions and scripts are plain old python code
+ * This is an Inkscape extension and works directly inside inkscape, no external tools are required.
+
+Things works very similar to: https://github.com/parametric-svg/tutorial
+
 ## Parametric expressions
 
 Any svg attribute can be made parametric just defining a companion attribute in the parametric namespace.
