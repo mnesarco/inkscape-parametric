@@ -111,18 +111,27 @@ class Parametric(inkex.Effect):
         root = self.getroot()
         script = root.find('.//{%s}script' % self.namespace)
         if script != None:
-            exec(script.text)
+            try:
+                exec(script.text, globals(), globals())
+            except Exception as e:
+                inkex.errormsg(str(e))
 
         # Eval parametric attributes
         px = "{%s}" % self.namespace
         pxn = len(px)
+        errors = ""
         for node in self.document.xpath("//*[@*[namespace-uri()='%s']]" % self.namespace):
             if node != root:
                 for att in node.items():
                     if att[0].startswith(px):
                         name  = att[0][pxn:]
-                        value = str(eval(att[1]))
-                        node.attrib[name] = value
+                        try:
+                            value = str(eval(att[1], globals(), globals()))
+                            node.attrib[name] = value
+                        except Exception as e:
+                            errors = errors + str(e) + "\n" 
+        if errors != "":
+            inkex.errormsg(errors)
 
 if __name__ == '__main__':
     e = Parametric()
