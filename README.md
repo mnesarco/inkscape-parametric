@@ -44,13 +44,26 @@ then you can use them in your attributes:
 
 ## Install
 
-Just copy parametric.py and parametric.inx in your inkscape extensions folder.
+Just copy parametric.py and parametric.inx to your inkscape extensions folder.
 
 After install, restart inkscape and the extension will appear:
 
-Menu / Extensions / Parametric SVG / Parametric SVG (Python)
+Menu / Extensions / Parametric SVG / Parametric SVG (Run)
 
 You can set your parametric expressions and script values using the builtin xml editor: Shift + Ctrl + X
 
- 
+## External code editor
+
+If you are using Linux, you can edit the parametric python code in an external editor called directly from inkscape:
+
+ * Install Scintilla editor: `sudo apt-get install scite`
+ * Copy parametric_editor.py and parametric_editor.inx to your inkscape extensions folder.
+ * Restart inkscape
+
+The code editor will be integrated:
+
+Menu / Extensions / Parametric SVG / Parametric SVG (Editor)
+
+Then you can edit the parametric script in the SciTE editor with syntax coloring. After you save and
+close the editor, your chages will be propagated to your svg document.
 
