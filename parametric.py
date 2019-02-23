@@ -20,6 +20,46 @@
 import inkex, simplestyle, simplepath, math, copy, sys
 from StringIO import StringIO
 
+class SvgObject(object):
+    """
+    This class is a wrapper of the svg node, attributes are mapped
+    to lxml node attributes
+    """
+    def __init__(self, lxml):
+        object.__setattr__(self, 'e', lxml)
+
+    def getE(self):
+        return object.__getattribute__(self, 'e')
+
+    def __getattr__(self, name):
+        return self.e.attrib[name]
+
+    def __setattr__(self, name, value):
+        self.e.attrib[name] = str(value)
+
+    def isgroup(self):
+        return self.getE().tag == 'g'
+
+    def gettag(self):
+        return inkex.etree.QName(self.getE())
+
+class SvgDoc(object):
+    """
+    This class is a wrapper of the svg document.
+    """
+    def __init__(self, lxml):
+        self.lxml = lxml
+
+    def findById(self, id):
+        """
+        Returns a wrapped svg object by its id
+        """
+        node = self.lxml.find('//*[@id="%s"]' % str(id), namespaces=inkex.NSS)
+        if node == None:
+            return None
+        else:
+            return SvgObject(node)
+
 class Parametric(inkex.Effect):
     """
     This extension adds parametric functionality to the svg document.
@@ -136,7 +176,7 @@ class Parametric(inkex.Effect):
             inkex.errormsg(errors)
 
     def effect(self):
-        ctx = {'_svg' : self.document}
+        ctx = {'_svg' : SvgDoc(self.document)}
         self.evalScript(ctx)
         self.evalAttributes(ctx)
 

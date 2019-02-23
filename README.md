@@ -42,6 +42,26 @@ then you can use them in your attributes:
 <rect ... parametric:width="width" parametric:height="height" parametric:y="myfunct()" />
 ```
 
+See: example.svg
+
+## Direct modification in the parametric script
+
+You can also find objects directly from the script and set attributes:
+
+```
+<parametric:script>
+
+r = _svg.findById('rect123')
+r.x = 100
+r.y = 100
+r.width = 100
+r.height = 200
+
+</parametric:script>
+```
+
+See: example2.svg
+
 ## Install
 
 Just copy parametric.py and parametric.inx to your inkscape extensions folder.
