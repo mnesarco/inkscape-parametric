@@ -108,18 +108,17 @@ class Parametric(inkex.Effect):
     def output(self):
         self.document.write(sys.stdout)
 
-    def effect(self):
-
-        # Execute script if any
+    def evalScript(self, ctx):
         root = self.getroot()
         script = root.find('.//{%s}script' % self.namespace)
         if script != None:
             try:
-                exec(script.text, globals(), globals())
+                exec(script.text, ctx, ctx)
             except Exception as e:
                 inkex.errormsg(str(e))
 
-        # Eval parametric attributes
+    def evalAttributes(self, ctx):
+        root = self.getroot()
         px = "{%s}" % self.namespace
         pxn = len(px)
         errors = ""
@@ -129,12 +128,17 @@ class Parametric(inkex.Effect):
                     if att[0].startswith(px):
                         name  = att[0][pxn:]
                         try:
-                            value = str(eval(att[1], globals(), globals()))
+                            value = str(eval(att[1], ctx, ctx))
                             node.attrib[name] = value
                         except Exception as e:
                             errors = errors + str(e) + "\n" 
         if errors != "":
             inkex.errormsg(errors)
+
+    def effect(self):
+        ctx = {'_svg' : self.document}
+        self.evalScript(ctx)
+        self.evalAttributes(ctx)
 
 if __name__ == '__main__':
     e = Parametric()
