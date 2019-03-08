@@ -20,6 +20,8 @@
 import inkex, simplestyle, simplepath, math, copy, sys
 from StringIO import StringIO
 
+etree = inkex.etree
+
 class SvgObject(object):
     """
     This class is a wrapper of the svg node, attributes are mapped
@@ -42,6 +44,12 @@ class SvgObject(object):
 
     def gettag(self):
         return inkex.etree.QName(self.getE())
+
+    def text(self, value = None):
+        if value is None:
+            return self.getE().text
+        else:
+            self.getE().text = value
 
 class SvgDoc(object):
     """
