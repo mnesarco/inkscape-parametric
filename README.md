@@ -1,3 +1,13 @@
+# Moved to Gitlab
+
+This repository was moved to Gitlab: https://gitlab.com/mnesarco/inkscape-pyscript
+
+New version (gitlab) contains:
+
+* Full document manipulation (not only attributes)
+* Namespaces support
+* Builtin Code Editor
+
 # Inkscape Parametric Extension
 
 This extension allows to define variables and set attributes with python expressions.
